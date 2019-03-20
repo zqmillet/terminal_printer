@@ -1,5 +1,6 @@
 import subprocess
 import fpdf
+import re
 
 from xterm_color_to_rgb import xterm_color_to_rgb
 
@@ -8,88 +9,142 @@ def get_panel_ascii_code(panel_name):
     result = subprocess.Popen(command, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     return result.stdout.read().decode('utf8')
 
+class FLAG:
+    BEGIN = '\x1b'
+    ENG = 'm'
+
 class STATUS:
     IDEL = 0
     BEGIN = 1
     END = 2
 
-def convert_ascii_code_to_latex(ascii_code, file_path):
-    print(ascii_code)
-    file = fpdf.FPDF()
-    file.add_page()
-    file.set_font('Courier', '', 14/3)
+class CONTROL:
+    SET_FORE_COLOR = 38
+    SET_BACK_COLOR = 48
+    SET_DEFAULT_FORE_COLOR = 39
+    SET_DEFAULT_BACK_COLOR = 49
+    FORE_COLOR_RANGE = list(range(30, SET_FORE_COLOR))
+    BACK_COLOR_RANGE = list(range(40, SET_BACK_COLOR))
 
-    BEGIN = '\x1b'
-    END = 'm'
+class PDFFile(object):
+    __file = None
+    __default_fore_color = None
+    __default_back_color = None
+    __font_name = None
+    __font_size = None
 
-    latex_code = ''
-    control = ''
-    status = STATUS.IDEL
-    for index, char in enumerate(ascii_code):
-        if status == STATUS.IDEL:
-            if char == BEGIN:
-                status = STATUS.BEGIN
-                control = ''
-                continue
-            else:
-                if ascii_code[index] == '\n':
-                    file.cell(1, 2, char, 0, 1, fill = True, align = 'C')
+    def __init__(
+        self,
+        default_fore_color,
+        default_back_color,
+        font_name = 'Courier',
+        font_size = 14 / 3
+    ):
+        self.__file = fpdf.FPDF()
+        self.__file.add_page()
+        self.__default_fore_color = default_fore_color
+        self.__default_back_color = default_back_color
+        self.set_font(font_name = font_name, font_size = font_size)
+
+    def set_back_color(self, r, g, b):
+        self.__file.set_fill_color(r, g, b)
+
+    def set_fore_color(self, r, g, b):
+        self.__file.set_text_color(r, g, b)
+
+    def set_font(self, font_name, font_size):
+        self.__file.set_font(font_name, '', font_size)
+        self.__font_name = font_name
+        self.__font_size = font_size
+
+    def set_default_color(self):
+        self.set_back_color(*self.__default_back_color)
+        self.set_fore_color(*self.__default_fore_color)
+
+    def add_char(self, char, end_line = False, fill = True, border = False, width = 1, height = 2, align = 'C'):
+        border = 1  if border else 0
+        end_line = 1 if end_line else 0
+        self.__file.cell(width, height, char, border, end_line, fill = True, align = align)
+
+    def write_line(self, ascii_code, maximum_line_length):
+        status = STATUS.IDEL
+        offset = 0
+        control_sequence = ''
+
+        for index, char in enumerate(ascii_code):
+            if status == STATUS.IDEL:
+                if char == FLAG.BEGIN:
+                    status = STATUS.BEGIN
+                    continue
                 else:
-                    file.cell(1, 2, char, 0, 0, fill = True, align = 'C')
-        elif status == STATUS.BEGIN:
-            if char == END:
-                status = STATUS.IDEL
-                colors = parse_control(control)
-
-                for color in colors:
-                    if color[0] == 'fore':
-                        file.set_text_color(*color[1])
-                    elif color[0] == 'back':
-                        file.set_fill_color(*color[1])
-                continue
+                    if offset == maximum_line_length - 1:
+                        self.add_char(char, end_line = True)
+                        offset = 0
+                    else:
+                        self.add_char(char, end_line = False)
+                        offset += 1
+            elif status == STATUS.BEGIN:
+                if char == FLAG.ENG:
+                    status = STATUS.IDEL
+                    self.execute(control_sequence)
+                    control_sequence = ''
+                else:
+                    control_sequence += char
             else:
-                control += char
-        else:
-            import pdb; pdb.set_trace()
-    file.output('py3k.pdf', 'F')
+                import pdb; pdb.set_trace()
 
-def parse_control(control):
-    FORE_COLOR = '38'
-    BACK_COLOR = '48'
+    def execute(self, control_sequence):
+        control_sequence = [int(command) for command in control_sequence[1:].split(';')]
 
-    if not control.startswith('['):
-        return list()
+        index = 0
+        while index < len(control_sequence):
+            command = control_sequence[index]
+            if command in CONTROL.FORE_COLOR_RANGE:
+                self.set_fore_color(*xterm_color_to_rgb(command))
+                index += 1
+            elif command in CONTROL.BACK_COLOR_RANGE:
+                self.set_back_color(*xterm_color_to_rgb(command))
+                index += 1
+            elif command == CONTROL.SET_FORE_COLOR:
+                self.set_fore_color(*xterm_color_to_rgb(control_sequence[index + 2]))
+                index += 3
+            elif command == CONTROL.SET_BACK_COLOR:
+                self.set_back_color(*xterm_color_to_rgb(control_sequence[index + 2]))
+                index += 3
+            elif command == CONTROL.SET_DEFAULT_FORE_COLOR:
+                self.set_fore_color(*self.__default_fore_color)
+                index += 1
+            elif command == CONTROL.SET_DEFAULT_BACK_COLOR:
+                self.set_back_color(*self.__default_back_color)
+                index += 1
+            else:
+                index += 1
 
-    control = control[1:].split(';')
+    def save(self, file_path):
+        self.__file.output(file_path, 'F')
 
-    if len(control) == 1:
-        if control[0].startswith('3'):
-            return [('back', xterm_color_to_rgb(control[0]))]
-        else:
-            return list()
-
-    colors = list()
-    index = 0
-    while True:
-        item = control[index]
-        if item == FORE_COLOR:
-            colors.append(('fore', xterm_color_to_rgb(control[index + 2])))
-            index += 2
-        elif item == BACK_COLOR:
-            colors.append(('back', xterm_color_to_rgb(control[index + 2])))
-            index += 2
-
-        index += 1
-        if index > len(control) - 1:
-            break
-
-    return colors
+def get_maximum_length(ascii_code):
+    regex = re.compile(r'\x1b\[[;\d]*[A-Za-z]')
+    return max([len(regex.sub('', line)) for line in ascii_code])
 
 def testcases():
-    ascii_code = get_panel_ascii_code('zhangqi:0.1')
+    ascii_code = get_panel_ascii_code('zhangqi:0.0')
     with open('tmux.txt', 'w') as file:
         file.write(ascii_code)
-    latex_code = convert_ascii_code_to_latex(ascii_code, 333)
+
+    pdf_file = PDFFile(
+        default_fore_color = (255, 255, 255),
+        default_back_color = (0, 0, 0)
+    )
+
+    ascii_code = ascii_code.strip('\n')
+    ascii_code = ascii_code.split('\n')
+    maximum_line_length = get_maximum_length(ascii_code)
+
+    for line in ascii_code:
+        pdf_file.write_line(line, maximum_line_length)
+
+    pdf_file.save('./main.pdf')
 
 if __name__ == '__main__':
     testcases()
