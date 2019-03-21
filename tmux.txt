@@ -1,8 +1,8 @@
 [4m[30m[48;5;103mUrwid Palette Test                                                                                                                                             
 [0m[38;5;230m[48;5;19m( ) Monochrome                                                                  ( ) Foreground Colors                                                          
-( ) 16-Color                                                                    (X) Background Colors                                                          
-( ) 88-Color                                                                                                                                                   
-[38;5;228m[48;5;89m(X) 256-Color                                                                   [38;5;230m[48;5;19m< Exit                                                                        >
+( ) 16-Color                                                                    [38;5;228m[48;5;89m(X) Background Colors                                                          
+[38;5;230m[48;5;19m( ) 88-Color                                                                                                                                                   
+(X) 256-Color                                                                   < Exit                                                                        >
 [39m[49m                                                                                                                                                               
 [43mbrown  [49m   [41mdark red [49m   [45mdark magenta [49m   [44mdark blue [49m   [46mdark cyan [49m   [42mdark green [49m                                                                                    
 [48;5;11mh11    [49m   [48;5;9mh9       [49m   [48;5;13mh13          [49m   [48;5;12mh12       [49m   [48;5;14mh14       [49m   [48;5;10mh10        [49m                                                                                    

@@ -23,8 +23,26 @@ class CONTROL:
     SET_BACK_COLOR = 48
     SET_DEFAULT_FORE_COLOR = 39
     SET_DEFAULT_BACK_COLOR = 49
-    FORE_COLOR_RANGE = list(range(30, SET_FORE_COLOR))
-    BACK_COLOR_RANGE = list(range(40, SET_BACK_COLOR))
+    SYSTEM_FORE_COLOR = {
+        30: (0,0,0),
+        31: (255,0,0),
+        32: (0,255,0),
+        33: (255,255,0),
+        34: (0,0,255),
+        35: (255,0,255),
+        36: (0,255,255),
+        37: (255,255,255)
+    }
+    SYSTEM_BACK_COLOR = {
+        40: (0,0,0),
+        41: (255,0,0),
+        42: (0,255,0),
+        43: (255,255,0),
+        44: (0,0,255),
+        45: (255,0,255),
+        46: (0,255,255),
+        47: (255,255,255)
+    }
 
 class PDFFile(object):
     __file = None
@@ -99,11 +117,11 @@ class PDFFile(object):
         index = 0
         while index < len(control_sequence):
             command = control_sequence[index]
-            if command in CONTROL.FORE_COLOR_RANGE:
-                self.set_fore_color(*xterm_color_to_rgb(command))
+            if command in CONTROL.SYSTEM_FORE_COLOR:
+                self.set_fore_color(*CONTROL.SYSTEM_FORE_COLOR[command])
                 index += 1
-            elif command in CONTROL.BACK_COLOR_RANGE:
-                self.set_back_color(*xterm_color_to_rgb(command))
+            elif command in CONTROL.SYSTEM_BACK_COLOR:
+                self.set_back_color(*CONTROL.SYSTEM_BACK_COLOR[command])
                 index += 1
             elif command == CONTROL.SET_FORE_COLOR:
                 self.set_fore_color(*xterm_color_to_rgb(control_sequence[index + 2]))
@@ -127,19 +145,28 @@ def get_maximum_length(ascii_code):
     regex = re.compile(r'\x1b\[[;\d]*[A-Za-z]')
     return max([len(regex.sub('', line)) for line in ascii_code])
 
+def delete_blank_lines(ascii_code):
+    for index in list(range(len(ascii_code)))[::-1]:
+        if ascii_code[index].strip() == '':
+            del ascii_code[index]
+        else:
+            break
+    return ascii_code
+
+
 def testcases():
     ascii_code = get_panel_ascii_code('zhangqi:0.0')
     with open('tmux.txt', 'w') as file:
         file.write(ascii_code)
 
     pdf_file = PDFFile(
-        default_fore_color = (255, 255, 255),
-        default_back_color = (0, 0, 0)
+        default_fore_color = (112, 130, 132),
+        default_back_color = (10, 35, 44)
     )
 
-    ascii_code = ascii_code.strip('\n')
     ascii_code = ascii_code.split('\n')
     maximum_line_length = get_maximum_length(ascii_code)
+    ascii_code = delete_blank_lines(ascii_code)
 
     for line in ascii_code:
         pdf_file.write_line(line, maximum_line_length)
