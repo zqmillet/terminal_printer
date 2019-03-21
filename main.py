@@ -1,6 +1,7 @@
 import subprocess
 import fpdf
 import re
+import os
 
 from xterm_color_to_rgb import xterm_color_to_rgb
 
@@ -55,11 +56,15 @@ class PDFFile(object):
         self,
         default_fore_color,
         default_back_color,
-        font_name = 'Courier',
-        font_size = 14 / 3
+        font_path = './fonts/consolas.ttf',
+        font_size = 5
     ):
+        font_name = os.path.basename(font_path)
+        font_name = os.path.splitext(font_name)[0]
+
         self.__file = fpdf.FPDF()
         self.__file.add_page()
+        self.__file.add_font(font_name, fname = font_path, uni = True)
         self.__default_fore_color = default_fore_color
         self.__default_back_color = default_back_color
         self.set_font(font_name = font_name, font_size = font_size)
@@ -139,6 +144,7 @@ class PDFFile(object):
                 index += 1
 
     def save(self, file_path):
+        self.__file.set_margins(0, 0, 0)
         self.__file.output(file_path, 'F')
 
 def get_maximum_length(ascii_code):
@@ -161,7 +167,8 @@ def testcases():
 
     pdf_file = PDFFile(
         default_fore_color = (112, 130, 132),
-        default_back_color = (10, 35, 44)
+        default_back_color = (10, 35, 44),
+        font_path = './fonts/consolas.ttf'
     )
 
     ascii_code = ascii_code.split('\n')
