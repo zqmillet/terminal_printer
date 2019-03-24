@@ -1,70 +1,70 @@
-[4m[30m[48;5;103mUrwid Palette Test                                                                                                                                             
-[0m[38;5;230m[48;5;19m( ) Monochrome                                                                  ( ) Foreground Colors                                                          
-( ) 16-Color                                                                    [38;5;228m[48;5;89m(X) Background Colors                                                          
-[38;5;230m[48;5;19m( ) 88-Color                                                                                                                                                   
-(X) 256-Color                                                                   < Exit                                                                        >
-[39m[49m                                                                                                                                                               
-[43mbrown  [49m   [41mdark red [49m   [45mdark magenta [49m   [44mdark blue [49m   [46mdark cyan [49m   [42mdark green [49m                                                                                    
-[48;5;11mh11    [49m   [48;5;9mh9       [49m   [48;5;13mh13          [49m   [48;5;12mh12       [49m   [48;5;14mh14       [49m   [48;5;10mh10        [49m                                                                                    
-                                                                                                                                                               
-              [48;5;21m#00f[48;5;27m#06f[48;5;33m#08f[48;5;39m#0af[48;5;45m#0df[48;5;51m#0ff[49m        [40mblack       [49m    [48;5;8mh8          [49m                                                                                     
-            [48;5;57m#60f[48;5;20m#00d[48;5;26m#06d[48;5;32m#08d[48;5;38m#0ad[48;5;44m#0dd[48;5;50m#0fd[49m        [47mlight gray  [49m    [48;5;15mh15         [49m                                                                                   
-          [48;5;93m#80f[48;5;56m#60d[48;5;19m#00a[48;5;25m#06a[48;5;31m#08a[48;5;37m#0aa[48;5;43m#0da[48;5;49m#0fa[49m                                                                                                                     
-        [48;5;129m#a0f[48;5;92m#80d[48;5;55m#60a[48;5;18m#008[48;5;24m#068[48;5;30m#088[48;5;36m#0a8[48;5;42m#0d8[48;5;48m#0f8[49m                                                                                                                   
-      [48;5;165m#d0f[48;5;128m#a0d[48;5;92m#80d[48;5;54m#608[48;5;17m#006[48;5;23m#066[48;5;29m#086[48;5;35m#0a6[48;5;41m#0d6[48;5;47m#0f6[49m                                                                                                                 
-    [48;5;201m#f0f[48;5;164m#d0d[48;5;127m#a0a[48;5;90m#808[48;5;53m#606[48;5;16m#000[48;5;22m#060[48;5;28m#080[48;5;34m#0a0[48;5;40m#0d0[48;5;46m#0f0[48;5;47m#0f6[48;5;48m#0f8[48;5;49m#0fa[48;5;50m#0fd[48;5;51m#0ff[49m                                                                                           
-      [48;5;200m#f0d[48;5;163m#d0a[48;5;126m#a08[48;5;89m#806[48;5;52m#600[48;5;58m#660[48;5;64m#680[48;5;70m#6a0[48;5;76m#6d0[48;5;82m#6f0[48;5;83m#6f6[48;5;84m#6f8[48;5;85m#6fa[48;5;86m#6fd[48;5;87m#6ff[48;5;45m#0df[49m                                                                                         
-        [48;5;199m#f0a[48;5;162m#d08[48;5;125m#a06[48;5;88m#800[48;5;94m#860[48;5;100m#880[48;5;106m#8a0[48;5;112m#8d0[48;5;118m#8f0[48;5;119m#8f6[48;5;120m#8f8[48;5;121m#8fa[48;5;122m#8fd[48;5;123m#8ff[48;5;81m#6df[48;5;39m#0af[49m                                                                                       
-          [48;5;198m#f08[48;5;161m#d06[48;5;124m#a00[48;5;130m#a60[48;5;136m#a80[48;5;142m#aa0[48;5;148m#ad0[48;5;154m#af0[48;5;155m#af6[48;5;156m#af8[48;5;157m#afa[48;5;158m#afd[48;5;159m#aff[48;5;117m#8df[48;5;75m#6af[48;5;33m#08f[49m                                                                                     
-            [48;5;197m#f06[48;5;160m#d00[48;5;166m#d60[48;5;172m#d80[48;5;178m#da0[48;5;184m#dd0[48;5;190m#df0[48;5;191m#df6[48;5;192m#df8[48;5;193m#dfa[48;5;194m#dfd[48;5;195m#dff[48;5;153m#adf[48;5;111m#8af[48;5;69m#68f[48;5;27m#06f[49m                                                                                   
-              [48;5;196m#f00[48;5;202m#f60[48;5;208m#f80[48;5;214m#fa0[48;5;220m#fd0[48;5;226m#ff0[48;5;227m#ff6[48;5;228m#ff8[48;5;229m#ffa[48;5;230m#ffd[48;5;231m#fff[48;5;189m#ddf[48;5;147m#aaf[48;5;105m#88f[48;5;63m#66f[48;5;21m#00f[49m                                                                                 
-                                    [48;5;220m#fd0[48;5;221m#fd6[48;5;222m#fd8[48;5;223m#fda[48;5;224m#fdd[48;5;225m#fdf[48;5;183m#daf[48;5;141m#a8f[48;5;99m#86f[48;5;57m#60f[49m                                                                                   
-      [48;5;62m#66d[48;5;68m#68d[48;5;74m#6ad[48;5;80m#6dd[49m                [48;5;214m#fa0[48;5;215m#fa6[48;5;216m#fa8[48;5;217m#faa[48;5;218m#fad[48;5;219m#faf[48;5;177m#d8f[48;5;135m#a6f[48;5;93m#80f[49m                                                                                     
-    [48;5;98m#86d[48;5;61m#66a[48;5;67m#68a[48;5;73m#6aa[48;5;79m#6da[49m                [48;5;208m#f80[48;5;209m#f86[48;5;210m#f88[48;5;211m#f8a[48;5;212m#f8d[48;5;213m#f8f[48;5;171m#d6f[48;5;129m#a0f[49m                                                                                       
-  [48;5;134m#a6d[48;5;97m#86a[48;5;60m#668[48;5;66m#688[48;5;72m#6a8[48;5;78m#6d8[49m                [48;5;202m#f60[48;5;203m#f66[48;5;204m#f68[48;5;205m#f6a[48;5;206m#f6d[48;5;207m#f6f[48;5;165m#d0f[49m                                                                                         
-[48;5;170m#d6d[48;5;133m#a6a[48;5;96m#868[48;5;59m#666[48;5;65m#686[48;5;71m#6a6[48;5;77m#6d6[48;5;78m#6d8[48;5;79m#6da[48;5;80m#6dd[49m    [48;5;196m#f00[48;5;197m#f06[48;5;198m#f08[48;5;199m#f0a[48;5;200m#f0d[48;5;201m#f0f[49m                                                                                           
-  [48;5;169m#d6a[48;5;132m#a68[48;5;95m#866[48;5;101m#886[48;5;107m#8a6[48;5;113m#8d6[48;5;114m#8d8[48;5;115m#8da[48;5;116m#8dd[48;5;74m#6ad[49m                                                                                                                     
-    [48;5;168m#d68[48;5;131m#a66[48;5;137m#a86[48;5;143m#aa6[48;5;149m#ad6[48;5;150m#ad8[48;5;151m#ada[48;5;152m#add[48;5;110m#8ad[48;5;68m#68d[49m                                                                                                                   
-      [48;5;167m#d66[48;5;173m#d86[48;5;179m#da6[48;5;185m#dd6[48;5;186m#dd8[48;5;187m#dda[48;5;188m#ddd[48;5;146m#aad[48;5;104m#88d[48;5;62m#66d[49m        [48;5;251mg78 [48;5;252mg82 [48;5;253mg85 [48;5;254mg89 [48;5;255mg93 [48;5;231mg100[49m                                                                                 
-                    [48;5;179m#da6[48;5;180m#da8[48;5;181m#daa[48;5;182m#dad[48;5;140m#a8d[48;5;98m#86d[49m        [48;5;245mg52 [48;5;246mg58 [48;5;247mg62 [48;5;248mg66 [48;5;249mg70 [48;5;250mg74 [49m                                                                                   
-      [48;5;103m#88a[48;5;109m#8aa[49m        [48;5;173m#d86[48;5;174m#d88[48;5;175m#d8a[48;5;176m#d8d[48;5;134m#a6d[49m        [48;5;238mg27 [48;5;239mg31 [48;5;240mg35 [48;5;241mg38 [48;5;242mg42 [48;5;243mg46 [48;5;244mg50 [49m                                                                                 
-    [48;5;139m#a8a[48;5;102m#888[48;5;108m#8a8[48;5;109m#8aa[49m    [48;5;167m#d66[48;5;168m#d68[48;5;169m#d6a[48;5;170m#d6d[49m        [48;5;16mg0  [48;5;232mg3  [48;5;233mg7  [48;5;234mg11 [48;5;235mg15 [48;5;236mg19 [48;5;237mg23 [49m                                                                                   
-      [48;5;138m#a88[48;5;144m#aa8[48;5;145m#aaa[48;5;103m#88a[49m                                                                                                                                         
-            [48;5;138m#a88[48;5;139m#a8a[49m                                                                                                                                           
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
-                                                                                                                                                               
+    callback()                         
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/main_loop.py", line 572, in entering_idle                                       
+    self.draw_screen()                 
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/main_loop.py", line 586, in draw_screen                                         
+    canvas = self._topmost_widget.render(self.screen_size, focus=True)         
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 144, in cached_render                                          
+    canv = fn(self, size, focus=focus) 
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/container.py", line 1086, in render                                             
+    focus and self.focus_part == 'body')                                       
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 144, in cached_render                                          
+    canv = fn(self, size, focus=focus) 
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/decoration.py", line 226, in render                                             
+    canv = self._original_widget.render(size, focus=focus)                     
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 144, in cached_render                                          
+    canv = fn(self, size, focus=focus) 
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/listbox.py", line 471, in render                                                
+    (maxcol, maxrow), focus=focus)     
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/listbox.py", line 353, in calculate_visible                                     
+    self._set_focus_complete( (maxcol, maxrow), focus )                        
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/listbox.py", line 718, in _set_focus_complete                                   
+    (maxcol,maxrow), focus)            
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/listbox.py", line 688, in _set_focus_first_selectable                           
+    (maxcol, maxrow), focus=focus)     
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/listbox.py", line 362, in calculate_visible                                     
+    (maxcol,maxrow))                   
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/listbox.py", line 938, in get_focus_offset_inset                                
+    focus_rows = focus_widget.rows((maxcol,), True)                            
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 204, in cached_rows                                            
+    return fn(self, size, focus)       
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 1018, in rows                                                  
+    return len(self.get_line_translation(maxcol))                              
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 1033, in get_line_translation                                  
+    self._update_cache_translation(maxcol, ta)                                 
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 1043, in _update_cache_translation                             
+    text, maxcol )                     
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/lib/python3.5/site-packages/urwid/widget.py", line 1048, in _calc_line_translation                                
+    self._align_mode, self._wrap_mode )                                        
+  File "main.py", line 21, in layout   
+    return result                      
+  File "main.py", line 21, in layout   
+    return result                      
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/Python.framework/Versions/3.5/lib/python3.5/bdb.py", line 48, in trace_dispatch                                   
+    return self.dispatch_line(frame)   
+  File "/Users/zhangqi/.pyenv/versions/3.5.0/Python.framework/Versions/3.5/lib/python3.5/site-packages/pudb/debugger.py", line 189, in dispatch_line           
+    raise bdb.BdbQuit                  
+bdb.BdbQuit                            
+
+[1m[34m#[0m[39m[49m [36mzhangqi [37m@ [32mmacbook-pro [37min [1m[33m~/Workspace/wechat[0m[39m[49m [37mon[39m git:[36mmaster [31mx[39m [37m[0:05:08] C:[31m1[39m    
+[1m[31m$ 
+
+[34m#[0m[39m[49m [36mzhangqi [37m@ [32mmacbook-pro [37min [1m[33m~/Workspace/wechat[0m[39m[49m [37mon[39m git:[36mmaster [31mx[39m [37m[0:05:08] C:[31m1[39m    
+[1m[31m$ [0m[39m[49mpython3 test.py                      
+
+[1m[34m#[0m[39m[49m [36mzhangqi [37m@ [32mmacbook-pro [37min [1m[33m~/Workspace/wechat[0m[39m[49m [37mon[39m git:[36mmaster [31mx[39m [37m[11:18:50] [39m      
+[1m[31m$ [0m[39m[49m;;                                   
+zsh: parse error near `;;'             
+
+[1m[34m#[0m[39m[49m [36mzhangqi [37m@ [32mmacbook-pro [37min [1m[33m~/Workspace/wechat[0m[39m[49m [37mon[39m git:[36mmaster [31mx[39m [37m[11:18:54] C:[31m1[39m   
+[1m[31m$ [0m[39m[49mll                                   
+total 128                              
+drwxr-xr-x  3 zhangqi  staff    96B 12  2 00:54 [1m[36m__pycache__[0m[39m[49m                    
+-rw-r--r--@ 1 zhangqi  staff    26K 11 26 00:11 calc.py                        
+-rw-r--r--  1 zhangqi  staff   1.1K 12  2 00:54 dictionary.py                  
+-rwxr-xr-x  1 zhangqi  staff    12K 12 14 14:45 [31mgraph.py[39m                       
+-rw-r--r--  1 zhangqi  staff   2.5K 11 22 00:23 main.py                        
+-rw-r--r--  1 zhangqi  staff   9.2K  3 20 00:32 test.py                        
+-rw-r--r--  1 zhangqi  staff   542B 12  4 01:06 wechat.py                      
+
+[1m[34m#[0m[39m[49m [36mzhangqi [37m@ [32mmacbook-pro [37min [1m[33m~/Workspace/wechat[0m[39m[49m [37mon[39m git:[36mmaster [31mx[39m [37m[11:18:56] [39m      
+[1m[31m$ 
