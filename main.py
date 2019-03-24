@@ -2,6 +2,53 @@ import subprocess
 import fpdf
 import re
 import os
+import sys
+import argparse
+import textwrap
+import colorama
+
+class ArgumentParser(argparse.ArgumentParser):
+    '''
+    this class inherits from argparse.ArgumentParser.
+
+    this class can show the types and default values of parameters, automatically.
+    '''
+
+    def __init__(self, *argv, **kwargs):
+        '''
+        this is the constructor of the class ArgumentParser.
+
+        parameters:
+            it will pass all import arguments into the function __init__ of class argparse.ArgumentParser.
+        '''
+
+        super(ArgumentParser, self).__init__(formatter_class = argparse.RawTextHelpFormatter)
+
+    def add_argument(self, *argv, **kwargs):
+        '''
+        override the function add_argument.
+        it will format the help messages of argument.
+
+        parameters:
+            it will pass all import arguments into the function __init__ of class argparse.ArgumentParser.
+        '''
+
+        if 'help' in kwargs:
+            kwargs['help'] = kwargs['help'].strip().strip('.')
+            break_line = '\n'
+        else:
+            kwargs['help'] = ''
+            break_line = ''
+
+        comment_list = list()
+        if 'type' in kwargs:
+            comment_list.append('# parameter type: {type}'.format(type = kwargs['type']))
+        if 'default' in kwargs and not kwargs['default'] == argparse.SUPPRESS:
+            comment_list.append('# default value: {default}'.format(default = kwargs['default']))
+
+        comment = '' if len(comment_list) == 0 else colorama.Fore.BLUE + break_line + '\n'.join(comment_list) + colorama.Fore.RESET
+        kwargs['help'] = '\n'.join(sum([textwrap.wrap(line) for line in kwargs['help'].split('\n')], [])) + comment
+        super(ArgumentParser, self).add_argument(*argv, **kwargs)
 
 def get_panel_ascii_code(panel_name):
     command = ['tmux', 'capture-pane', '-t', panel_name, '-e', '-J', '-p']
@@ -494,8 +541,64 @@ def delete_blank_lines(ascii_code):
             break
     return ascii_code
 
+def parse_arguments():
+    argument_parser = ArgumentParser()
+    argument_parser.add_argument(
+        '-p', '--pane',
+        type = str,
+        action = 'store',
+        required = True,
+        help = 'specify the pane name of tmux'
+    )
+    argument_parser.add_argument(
+        '-s', '--font_size',
+        type = int,
+        action = 'store',
+        default = 5,
+        help = 'specify the font size'
+    )
+    argument_parser.add_argument(
+        '-f', '--default_fore_color',
+        type = int,
+        nargs = 3,
+        action = 'store',
+        default = [255, 255, 255],
+        help = 'specify the default fore color'
+    )
+    argument_parser.add_argument(
+        '-b', '--default_back_color',
+        type = int,
+        nargs = 3,
+        action = 'store',
+        default = [0, 0, 0],
+        help = 'specify the default back color'
+    )
+    argument_parser.add_argument(
+        '-n', '--font_name',
+        type = int,
+        action = 'store',
+        default = './fonts/consolas.ttf',
+        help = 'specify the font name'
+    )
+    argument_parser.add_argument(
+        '-t', '--temporary_file',
+        type = str,
+        action = 'store',
+        default = '{output_file_name}.tmux',
+        help = 'specify the temporary file path'
+    )
+    argument_parser.add_argument(
+        '-o', '--output',
+        type = str,
+        action = 'store',
+        required = True,
+        help = 'specify the output file path'
+    )
+
+    return argument_parser.parse_args(sys.argv[1:])
 
 def testcases():
+    arguments = parse_arguments()
     ascii_code = get_panel_ascii_code('zhangqi:0.0')
     with open('tmux.txt', 'w') as file:
         file.write(ascii_code)
@@ -505,8 +608,6 @@ def testcases():
         # default_back_color = (10, 35, 44),
         default_fore_color = (255, 255, 255),
         default_back_color = (0, 0, 0),
-        bold_fore_color = (255,255,0),
-        bold_back_color = (0, 0, 0),
         font_path = './fonts/consolas.ttf',
         ascii_code = ascii_code
     )
