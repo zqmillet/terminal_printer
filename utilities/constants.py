@@ -1,3 +1,12 @@
+class FILE_MODE:
+    READ = 'r'
+    WRITE = 'w'
+    BINARY_READ = 'rb'
+    BINARY_WRITE = 'wb'
+
+class ENCODE:
+    UTF8 = 'utf8'
+
 class FLAG:
     BEGIN = '\x1b'
     ENG = 'm'

@@ -1,4 +1,4 @@
-from .constants import FLAG, STATUS, CONTROL
+from .constants import FLAG, STATUS, CONTROL, FILE_MODE, ENCODE
 from .argument_parser import ArgumentParser
 from .color_map import ColorMap
 from .tmux import get_maximum_length, get_pane_ascii_code, delete_blank_lines

@@ -6,7 +6,7 @@ import sys
 
 from utilities import ArgumentParser
 from utilities import PDFFile
-from utilities import FLAG, CONTROL, STATUS
+from utilities import FLAG, CONTROL, STATUS, FILE_MODE, ENCODE
 
 def get_pane_ascii_code(pane_name):
     command = ['tmux', 'capture-pane', '-t', pane_name, '-e', '-J', '-p']
@@ -59,17 +59,10 @@ def parse_arguments():
     )
     argument_parser.add_argument(
         '-n', '--font_name',
-        type = int,
+        type = str,
         action = 'store',
         default = './fonts/consolas.ttf',
         help = 'specify the font name'
-    )
-    argument_parser.add_argument(
-        '-t', '--temporary_file',
-        type = str,
-        action = 'store',
-        default = '{output_file_name}.tmux',
-        help = 'specify the temporary file path'
     )
     argument_parser.add_argument(
         '-o', '--output',
@@ -81,11 +74,21 @@ def parse_arguments():
 
     return argument_parser.parse_args(sys.argv[1:])
 
+def get_temporary_file_path(output_file_path, extension = 'tmux'):
+    output_file_name = os.path.split(output_file_path)[-1]
+    temporary_file_name = os.path.splitext(output_file_name)[0] + '.' + extension
+    output_directory = os.path.dirname(output_file_path)
+    return os.path.join(output_directory, temporary_file_name)
+
 def testcases():
     arguments = parse_arguments()
 
+    output_file_path = arguments.output
+    temporary_file_path = get_temporary_file_path(output_file_path)
+    import pdb; pdb.set_trace()
+
     ascii_code = get_panel_ascii_code(arguments.pane)
-    with open('tmux.txt', 'w') as file:
+    with open(arguments.temporary_file, FILE_MODE.READ, encoding = ENCODE.UTF8) as file:
         file.write(ascii_code)
 
     pdf_file = PDFFile(
