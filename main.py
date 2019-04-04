@@ -36,9 +36,9 @@ def parse_arguments():
     )
     argument_parser.add_argument(
         '-s', '--font_size',
-        type = int,
+        type = float,
         action = 'store',
-        default = 5,
+        default = 5.3,
         help = 'specify the font size'
     )
     argument_parser.add_argument(
@@ -95,6 +95,7 @@ def testcases():
         default_fore_color = tuple(arguments.default_fore_color),
         default_back_color = tuple(arguments.default_back_color),
         font_path = arguments.font,
+        font_size = arguments.font_size,
         ascii_code = ascii_code
     )
 
