@@ -58,11 +58,11 @@ def parse_arguments():
         help = 'specify the default back color'
     )
     argument_parser.add_argument(
-        '-n', '--font_name',
+        '-n', '--font,
         type = str,
         action = 'store',
         default = './fonts/consolas.ttf',
-        help = 'specify the font name'
+        help = 'specify the font'
     )
     argument_parser.add_argument(
         '-o', '--output',
@@ -92,11 +92,9 @@ def testcases():
         file.write(ascii_code)
 
     pdf_file = PDFFile(
-        # default_fore_color = (112, 130, 132),
-        # default_back_color = (10, 35, 44),
-        default_fore_color = (255, 255, 255),
-        default_back_color = (0, 0, 0),
-        font_path = './fonts/consolas.ttf',
+        default_fore_color = tuple(arguments.default_fore_color),
+        default_back_color = tuple(arguments.default_back_color),
+        font_path = arguments.font,
         ascii_code = ascii_code
     )
 
