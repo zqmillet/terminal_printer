@@ -42,7 +42,7 @@ def parse_arguments():
         help = 'specify the default back color'
     )
     argument_parser.add_argument(
-        '-n', '--font,
+        '-n', '--font',
         type = str,
         action = 'store',
         default = './fonts/consolas.ttf',
@@ -70,8 +70,8 @@ def testcases():
     output_file_path = arguments.output
     temporary_file_path = get_temporary_file_path(output_file_path)
 
-    ascii_code = get_panel_ascii_code(arguments.pane)
-    with open(arguments.temporary_file, FILE_MODE.READ, encoding = ENCODE.UTF8) as file:
+    ascii_code = get_pane_ascii_code(arguments.pane)
+    with open(temporary_file_path, FILE_MODE.WRITE, encoding = ENCODE.UTF8) as file:
         file.write(ascii_code)
 
     pdf_file = PDFFile(

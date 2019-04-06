@@ -126,7 +126,7 @@ class PDFFile(object):
         self.set_back_color(*back_color)
 
     def execute(self, control_sequence):
-        control_sequence = [int(command) for command in control_sequence[1:].split(';')]
+        control_sequence = [int(command) for command in control_sequence[1:].split(';') if not len(command) == 0]
 
         index = 0
         while index < len(control_sequence):
