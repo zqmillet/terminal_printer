@@ -22,7 +22,7 @@ def parse_arguments():
         '-s', '--font_size',
         type = float,
         action = 'store',
-        default = 5.3,
+        default = 8,
         help = 'specify the font size'
     )
     argument_parser.add_argument(
@@ -69,18 +69,17 @@ def testcases():
 
     output_file_path = arguments.output
     temporary_file_path = get_temporary_file_path(output_file_path)
-    import pdb; pdb.set_trace()
 
     ascii_code = get_panel_ascii_code(arguments.pane)
     with open(arguments.temporary_file, FILE_MODE.READ, encoding = ENCODE.UTF8) as file:
         file.write(ascii_code)
 
     pdf_file = PDFFile(
+        ascii_code = ascii_code,
         default_fore_color = tuple(arguments.default_fore_color),
         default_back_color = tuple(arguments.default_back_color),
         font_path = arguments.font,
-        font_size = arguments.font_size,
-        ascii_code = ascii_code
+        font_size = arguments.font_size
     )
 
     pdf_file.save('./main.pdf')
