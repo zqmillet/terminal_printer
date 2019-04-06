@@ -26,7 +26,7 @@ def parse_arguments():
         help = 'specify the font size'
     )
     argument_parser.add_argument(
-        '-f', '--default_fore_color',
+        '-df', '--default_fore_color',
         type = int,
         nargs = 3,
         action = 'store',
@@ -34,7 +34,23 @@ def parse_arguments():
         help = 'specify the default fore color'
     )
     argument_parser.add_argument(
-        '-b', '--default_back_color',
+        '-db', '--default_back_color',
+        type = int,
+        nargs = 3,
+        action = 'store',
+        default = [0, 0, 0],
+        help = 'specify the default back color'
+    )
+    argument_parser.add_argument(
+        '-bf', '--bold_fore_color',
+        type = int,
+        nargs = 3,
+        action = 'store',
+        default = [0, 255, 255],
+        help = 'specify the default fore color'
+    )
+    argument_parser.add_argument(
+        '-bb', '--bold_back_color',
         type = int,
         nargs = 3,
         action = 'store',
@@ -78,6 +94,8 @@ def testcases():
         ascii_code = ascii_code,
         default_fore_color = tuple(arguments.default_fore_color),
         default_back_color = tuple(arguments.default_back_color),
+        bold_fore_color = tuple(arguments.bold_fore_color),
+        bold_back_color = tuple(arguments.bold_back_color),
         font_path = arguments.font,
         font_size = arguments.font_size
     )

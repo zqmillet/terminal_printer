@@ -59,6 +59,7 @@ class PDFFile(object):
         self.__back_color = default_back_color
 
         self.set_font(font_name = font_name, font_size = font_size)
+        self.set_default_color()
 
         for line in ascii_code:
             self.write_line(line, maximum_line_length)

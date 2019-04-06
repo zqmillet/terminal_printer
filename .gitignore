@@ -123,5 +123,6 @@ dmypy.json
 .pyre/
 
 *.pdf
+*.tmux
 *.pkl
 *.DS_Store
