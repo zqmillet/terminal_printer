@@ -1,5 +1,6 @@
 import os
 import fpdf
+import unicodedata
 
 from utilities import ColorMap
 from utilities import get_maximum_length, delete_blank_lines
@@ -125,6 +126,10 @@ class PDFFile(object):
         self.add_char(' ', end_line = True)
         self.set_fore_color(*fore_color)
         self.set_back_color(*back_color)
+
+    @staticmethod
+    def is_full_width_char(char):
+        pass
 
     def execute(self, control_sequence):
         control_sequence = [int(command) for command in control_sequence[1:].split(';') if not len(command) == 0]
