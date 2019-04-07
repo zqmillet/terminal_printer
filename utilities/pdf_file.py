@@ -1,10 +1,10 @@
 import os
 import fpdf
-import unicodedata
 
 from utilities import ColorMap
 from utilities import get_maximum_length, delete_blank_lines
 from utilities import FLAG, CONTROL, STATUS
+from utilities import get_char_width
 
 class PDFFile(object):
     __file = None
@@ -85,7 +85,7 @@ class PDFFile(object):
     def add_char(self, char, end_line = False, fill = True, border = False, align = 'C'):
         border = 1  if border else 0
         end_line = 1 if end_line else 0
-        self.__file.cell(self.__char_width, self.__char_height, char, border, end_line, fill = True, align = align)
+        self.__file.cell(self.__char_width * get_char_width(char), self.__char_height, char, border, end_line, fill = True, align = align)
 
     def write_line(self, ascii_code, maximum_line_length):
         status = STATUS.IDEL
