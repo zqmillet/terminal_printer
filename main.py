@@ -26,6 +26,13 @@ def parse_arguments():
         help = 'specify the font size'
     )
     argument_parser.add_argument(
+        '-c', '--char_rate',
+        type = float,
+        action = 'store',
+        default = 1,
+        help = 'specify the char rate'
+    )
+    argument_parser.add_argument(
         '-df', '--default_fore_color',
         type = int,
         nargs = 3,
@@ -97,7 +104,8 @@ def testcases():
         bold_fore_color = tuple(arguments.bold_fore_color),
         bold_back_color = tuple(arguments.bold_back_color),
         font_path = arguments.font,
-        font_size = arguments.font_size
+        font_size = arguments.font_size,
+        char_rate = arguments.char_rate
     )
 
     pdf_file.save('./main.pdf')

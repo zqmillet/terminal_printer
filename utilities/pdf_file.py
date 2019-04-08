@@ -28,7 +28,8 @@ class PDFFile(object):
         bold_fore_color = None,
         bold_back_color = None,
         font_path = './fonts/consolas.ttf',
-        font_size = 5.3
+        font_size = 5,
+        char_rate = 1
     ):
         ascii_code = ascii_code.split('\n')
         maximum_line_length = get_maximum_length(ascii_code)
@@ -44,7 +45,7 @@ class PDFFile(object):
         self.__color_map = ColorMap()
         self.__color_map.set_black(default_back_color)
 
-        self.__char_width = font_size / 5.3
+        self.__char_width = font_size / char_rate / 5
         self.__char_height = self.__char_width * 2
 
         self.__file = fpdf.FPDF(format = (maximum_line_length * self.__char_width, line_number * self.__char_height))
