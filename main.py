@@ -15,7 +15,7 @@ def parse_arguments():
         '-p', '--pane',
         type = str,
         action = 'store',
-        required = True,
+        default = None,
         help = 'specify the pane name of tmux'
     )
     argument_parser.add_argument(
