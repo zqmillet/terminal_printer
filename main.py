@@ -7,7 +7,7 @@ import sys
 from utilities import ArgumentParser
 from utilities import PDFFile
 from utilities import FLAG, CONTROL, STATUS, FILE_MODE, ENCODE
-from utilities import get_pane_ascii_code, get_maximum_length, delete_blank_lines
+from utilities import get_pane_ascii_code, get_maximum_length, delete_blank_lines, get_pane_list
 
 def parse_arguments():
     argument_parser = ArgumentParser()
@@ -87,7 +87,7 @@ def get_temporary_file_path(output_file_path, extension = 'tmux'):
     output_directory = os.path.dirname(output_file_path)
     return os.path.join(output_directory, temporary_file_name)
 
-def testcases():
+def main():
     arguments = parse_arguments()
 
     output_file_path = arguments.output
@@ -109,6 +109,9 @@ def testcases():
     )
 
     pdf_file.save('./main.pdf')
+
+def testcases():
+    print(get_pane_list())
 
 if __name__ == '__main__':
     testcases()

@@ -18,4 +18,5 @@ def delete_blank_lines(ascii_code):
             break
     return ascii_code
 
-
+def get_pane_list():
+    import pdb; pdb.set_trace()
