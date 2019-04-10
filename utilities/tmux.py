@@ -19,4 +19,17 @@ def delete_blank_lines(ascii_code):
     return ascii_code
 
 def get_pane_list():
-    import pdb; pdb.set_trace()
+    command = ['tmux', 'list-sessions']
+    result = subprocess.Popen(command, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    result = result.stdout.read().decode('utf8')
+    session_list = [item.split(':', 1)[0] for item in result.strip().split('\n')]
+
+    pane_list = list()
+    for session in session_list:
+        command = ['tmux', 'list-panes', '-t', session]
+        result = subprocess.Popen(command, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        result = result.stdout.read().decode('utf8')
+
+        pane_list += [session + ':' + item.split(':', 1)[0] for item in result.strip().split('\n')]
+
+    return pane_list
