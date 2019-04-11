@@ -87,13 +87,31 @@ def get_temporary_file_path(output_file_path, extension = 'tmux'):
     output_directory = os.path.dirname(output_file_path)
     return os.path.join(output_directory, temporary_file_name)
 
+def get_pane_name():
+    print('panes:')
+    pane_name_list = get_pane_list()
+    for index, pane_name in enumerate(pane_name_list, start = 1):
+        print('<{index}> {pane_name}'.format(pane_name = pane_name, index = index))
+
+    choices = [str(item) for item in range(1, index + 1)]
+    while True:
+        print('which pane do you want to print? {choices}:'.format(choices = choices, end = ' '))
+        pane_index = input()
+
+        if not pane_index in choices:
+            continue
+
+        return pane_name_list[int(pane_index) - 1]
+
 def main():
     arguments = parse_arguments()
+
+    pane_name = arguments.pane if not arguments.pane is None else get_pane_name()
 
     output_file_path = arguments.output
     temporary_file_path = get_temporary_file_path(output_file_path)
 
-    ascii_code = get_pane_ascii_code(arguments.pane)
+    ascii_code = get_pane_ascii_code(pane_name)
     with open(temporary_file_path, FILE_MODE.WRITE, encoding = ENCODE.UTF8) as file:
         file.write(ascii_code)
 
@@ -110,8 +128,5 @@ def main():
 
     pdf_file.save('./main.pdf')
 
-def testcases():
-    print(get_pane_list())
-
 if __name__ == '__main__':
-    testcases()
+    main()
