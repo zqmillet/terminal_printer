@@ -95,7 +95,7 @@ def get_pane_name():
 
     choices = [str(item) for item in range(1, index + 1)]
     while True:
-        print('which pane do you want to print? {choices}:'.format(choices = choices, end = ' '))
+        print('which pane do you want to print? <{choices}>:'.format(choices = ', '.join(choices)), end = ' ')
         pane_index = input()
 
         if not pane_index in choices:
@@ -107,6 +107,7 @@ def main():
     arguments = parse_arguments()
 
     pane_name = arguments.pane if not arguments.pane is None else get_pane_name()
+    print('printing the pane {pane_name}'.format(pane_name = pane_name))
 
     output_file_path = arguments.output
     temporary_file_path = get_temporary_file_path(output_file_path)
