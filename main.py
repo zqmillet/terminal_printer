@@ -127,7 +127,7 @@ def main():
         char_rate = arguments.char_rate
     )
 
-    pdf_file.save('./main.pdf')
+    pdf_file.save(output_file_path)
 
 if __name__ == '__main__':
     main()
