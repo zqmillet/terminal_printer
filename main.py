@@ -67,7 +67,7 @@ def parse_arguments():
         '-n', '--font',
         type = str,
         action = 'store',
-        default = './fonts/consolas.ttf',
+        default = os.path.join(os.path.dirname(__file__), 'fonts/monaco.ttf'),
         help = 'specify the font'
     )
     argument_parser.add_argument(
@@ -106,6 +106,12 @@ def get_choice(choices, hint):
 
         return choice
 
+def delete_pickles():
+    directory = os.path.join(os.path.dirname(__file__), 'fonts')
+    for file_name in os.listdir(directory):
+        if file_name.endswith('.pkl'):
+            os.remove(os.path.join(directory, file_name))
+
 def main():
     arguments = parse_arguments()
 
@@ -118,6 +124,8 @@ def main():
     ascii_code = get_pane_ascii_code(pane_name)
     with open(temporary_file_path, FILE_MODE.WRITE, encoding = ENCODE.UTF8) as file:
         file.write(ascii_code)
+
+    delete_pickles()
 
     pdf_file = PDFFile(
         ascii_code = ascii_code,

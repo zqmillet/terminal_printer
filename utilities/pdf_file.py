@@ -25,9 +25,9 @@ class PDFFile(object):
         ascii_code,
         default_fore_color,
         default_back_color,
+        font_path,
         bold_fore_color = None,
         bold_back_color = None,
-        font_path = './fonts/consolas.ttf',
         font_size = 5,
         char_rate = 1
     ):
@@ -176,5 +176,3 @@ class PDFFile(object):
     def save(self, file_path):
         self.__file.set_margins(0, 0, 0)
         self.__file.output(file_path, 'F')
-
-
