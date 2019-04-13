@@ -61,8 +61,7 @@ def parse_arguments():
         nargs = 3,
         action = 'store',
         default = [0, 0, 0],
-        help = 'specify the default back color'
-    )
+        help = 'specify the default back color')
     argument_parser.add_argument(
         '-n', '--font',
         type = str,

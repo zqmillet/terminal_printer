@@ -26,10 +26,22 @@ def get_pane_list():
 
     pane_list = list()
     for session in session_list:
-        command = ['tmux', 'list-panes', '-t', session]
+        command = ['tmux', 'list-windows', '-t', session]
         result = subprocess.Popen(command, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         result = result.stdout.read().decode('utf8')
+        window_list = [item.split(':', 1)[0] for item in result.strip().split('\n')]
 
-        pane_list += [session + ':' + item.split(':', 1)[0] for item in result.strip().split('\n')]
+        for window in window_list:
+            command = ['tmux', 'list-panes', '-t', session + ':' + window]
+            result = subprocess.Popen(command, stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            result = result.stdout.read().decode('utf8')
+
+            pane_list += [session + ':' + window + '.' + item.split(':', 1)[0] for item in result.strip().split('\n')]
 
     return pane_list
+
+def testcases():
+    print(get_pane_list())
+
+if __name__ == '__main__':
+    testcases()
