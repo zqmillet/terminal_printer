@@ -127,6 +127,8 @@ def main():
         char_rate = arguments.char_rate
     )
 
+    if os.path.exists(output_file_path):
+        print(2333)
     pdf_file.save(output_file_path)
 
 if __name__ == '__main__':
