@@ -1,6 +1,5 @@
-import subprocess
-import fpdf
-import re
+#!/usr/bin/env python
+
 import os
 import sys
 
