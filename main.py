@@ -94,14 +94,18 @@ def get_pane_name():
         print('<{index}> {pane_name}'.format(pane_name = pane_name, index = index))
 
     choices = [str(item) for item in range(1, index + 1)]
-    while True:
-        print('which pane do you want to print? <{choices}>:'.format(choices = ', '.join(choices)), end = ' ')
-        pane_index = input()
+    choice = get_choice(choices, hint = 'which pane do you want to print?')
+    return pane_name_list[int(choice) - 1]
 
-        if not pane_index in choices:
+def get_choice(choices, hint):
+    while True:
+        print(hint + ' <{choices}>:'.format(choices = ', '.join(choices)), end = ' ')
+        choice = input()
+
+        if not choice in choices:
             continue
 
-        return pane_name_list[int(pane_index) - 1]
+        return choice
 
 def main():
     arguments = parse_arguments()
@@ -128,7 +132,11 @@ def main():
     )
 
     if os.path.exists(output_file_path):
-        print(2333)
+        choice = get_choice(choices = ['y', 'n'], hint = 'the file {output_file_path} exist, do you want to replace it?'.format(output_file_path = output_file_path))
+
+        if choice == 'n':
+            return
+
     pdf_file.save(output_file_path)
 
 if __name__ == '__main__':
