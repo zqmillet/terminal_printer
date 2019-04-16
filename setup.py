@@ -84,7 +84,7 @@ setup(
 
     # This should be a valid email address corresponding to the author listed
     # above.
-    author_email='zqmillet@qq.com' # Optional
+    author_email='zqmillet@qq.com', # Optional
 
     # Classifiers help users find your project by categorizing it.
     #
