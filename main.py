@@ -115,12 +115,16 @@ def main():
     arguments = parse_arguments()
 
     pane_name = arguments.pane if not arguments.pane is None else get_pane_name()
-    print('printing the pane {pane_name}'.format(pane_name = pane_name))
 
     output_file_path = arguments.output
     temporary_file_path = get_temporary_file_path(output_file_path)
 
     ascii_code = get_pane_ascii_code(pane_name)
+    if len(ascii_code.strip()) == 0:
+        print('there is nothing to print')
+        return
+
+    print('printing the pane {pane_name}'.format(pane_name = pane_name))
     with open(temporary_file_path, FILE_MODE.WRITE, encoding = ENCODE.UTF8) as file:
         file.write(ascii_code)
 
