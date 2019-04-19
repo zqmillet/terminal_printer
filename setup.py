@@ -80,7 +80,7 @@ setup(
 
     # This should be your name or the name of the organization which owns the
     # project.
-    author='qiqi',  # Optional
+    author='zqmillet',  # Optional
 
     # This should be a valid email address corresponding to the author listed
     # above.
