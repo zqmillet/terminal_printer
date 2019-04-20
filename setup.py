@@ -78,8 +78,7 @@ setup(
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
     url='https://github.com/zqmillet/tmux_printer',  # Optional
 
-    # This should be your name or the name of the organization which owns the
-    # project.
+    # This should be your name or the name of the organization which owns the project.
     author='zqmillet',  # Optional
 
     # This should be a valid email address corresponding to the author listed
@@ -204,3 +203,4 @@ setup(
         'Source': 'https://github.com/zqmillet/tmux_printer',
     },
 )
+
